@@ -14,8 +14,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:paddingStart="16dp"
+        android:paddingStart="12dp"
         android:paddingEnd="8dp">
+
+        <!-- Color stripe -->
+        <View
+            android:id="@+id/colorStripe"
+            android:layout_width="6dp"
+            android:layout_height="0dp"
+            android:background="#16A34A"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✅"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@id/colorStripe"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="12dp"/>
 
         <TextView
             android:id="@+id/listTitle"
@@ -26,8 +47,9 @@
             android:ellipsize="end"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/moreBtn"/>
+            app:layout_constraintStart_toEndOf="@id/emoji"
+            app:layout_constraintEnd_toStartOf="@id/moreBtn"
+            android:layout_marginStart="8dp"/>
 
         <ImageButton
             android:id="@+id/moreBtn"
