@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorSurface"
+        app:title="Items"
+        app:titleCentered="true" />
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:padding="12dp">
+        <EditText android:id="@+id/newItemInput" android:hint="Add item"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button android:id="@+id/addItemBtn" android:text="Add"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/shareBtn" android:text="Share"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemsRecycler"
+        android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1"/>
+</LinearLayout>
