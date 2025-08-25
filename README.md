@@ -1,29 +1,34 @@
-I. Project Title / Description
-Project Title: QuickList
+I. Project Title / Description 
+Project Title: QuickList 
+Due date for final submission: Feature set is frozen now; final deliverable is due in Week 7 (v1.0).
 
-Project Description: The QuickList app will allow users to create, edit, and share simple grocery lists with family or friends. Users can add, remove, or check off items on a list, and the view will be instantly updated for all users that are viewing the list.
+Project description: QuickList will allow users to create, edit, and share simple grocery lists with family or friends. Users will be able to add, remove, or check off items on a list, and the view will be instantly updated for all users that are viewing the list.
 
-II. Problem Solving
-Grocery lists are often kept on paper, or users will use a note app to keep track of items they need to purchase. These are both easy to lose and cannot be shared with others in a convenient way. An app that allows multiple users to edit a single list in real-time makes this task much easier, so there is always the most recent list to reference, and users do not buy duplicate items.
+II. Problem Solving 
+Grocery lists are typically created on paper or with a notes app in order to track items users need to purchase. Both of these options are easily lost and cannot be shared with others in a convenient manner. An app that allows multiple users to edit a single list in real-time simplifies this process so there is always the most recent list available and users are not buying duplicate items.
 
-III. Platform
-The platform chosen for this app is a native Android app, which will be distributed on the Google Play Store. This will allow the app to take full advantage of the features of the Android OS and the devices themselves, as well as narrow the focus of the class for this development.
+III. Platform 
+The platform to be used for this app is a native Android app, which will be distributed through the Google Play Store. This will allow the app to make the most of the features of the Android OS and the devices themselves, as well as narrow the focus of the class for this development.
 
-IV. Front-end / Back-end Support
+IV. Front-end / Back-end Support 
 
-Front-end:
+Front-end: 
 
 Technology: The front-end technology stack will consist of the Java programming language. The user interface will be constructed with XML layout files for all screens and layout construction.
 
-UI/UX: The app will have a very clean and minimalist design. Emphasis will be placed on a simple list that is easy to read and large buttons to add or check off items, with tappable targets that are easy to use on all sizes of devices.
+UI/UX: The app will have a very clean and minimalist design. Emphasis will be placed on a simple list that is easy to read and large buttons to add or check off items with tappable targets that are easy to use on all sizes of devices.
 
-Back-end:
+Back-end: 
 
 Technology: The back-end services for this app will be provided by Firebase. This will be used to create a Firestore real-time database, as well as Firebase Authentication to allow users to sign in to the app. Firebase will be integrated with the specific Android SDK.
 
-Data: The database will store user accounts and a collection of grocery lists. Each list will store the list name, which user created it, and an array of items, each with a status such as checked or unchecked.
+Data: The database stores user accounts and shared lists. Each list keeps metadata and membership, 
+and items are stored as documents in a subcollection for real-time updates.
 
-V. Functionality
+• lists/{listId}: { name, createdBy, members[], createdAt, pinned:boolean, archived:boolean, color:"#RRGGBB", emoji:String }
+• lists/{listId}/items/{itemId}: { text, createdBy, createdAt, checked:boolean, quantity:int } 
+
+V. Functionality 
 
 User Authentication: Users should be able to sign up for a new account and log in.
 
@@ -35,12 +40,50 @@ Check Off Items: Items can be checked off as “checked” with a single tap, id
 
 Real-time Sharing: Users should be able to share their list with another user by providing a unique link to the list or email. The second user should then be able to view the list, with all changes updated in real-time, and make changes to the list that are instantly reflected for all other users viewing or editing the same list.
 
-VI. Design (Wireframes)
-Screen 1: Login/Signup
+• Item Quantities: Each item stores a quantity with quick +/– controls
+• Swipe Actions: Left = toggle checked; Right = delete with UNDO 
+• Sort Items A–Z: Optional alphabetical sort in the list view 
+• Home Enhancements: Search, Sort (A–Z/Recent), Pin/Archive lists, per-list color and emoji
+• Visual Feedback: Empty states and confetti when a list reaches 100% complete
+
+VI. Design (Wireframes) 
+Screen 1: Login/Signup 
 Description: Simple screen with text fields for an email and password.
 
-Screen 2: Home Dashboard
+Screen 2: Home Dashboard 
 Description: A screen that displays a list of all the user’s grocery lists. The user can tap on an item to open it or a plus button to create a new list.
 
-Screen 3: Grocery List View
+Screen 3: Grocery List View 
 Description: This is the primary screen for the app. It displays a list of items. Each item has a checkbox (or similar tap target) next to it. There is an input field and a button to add new items.
+
+VII. Week 4 Update — Changes Since Last Submission 
+This week focused on user experience and list/item productivity improvements:
+
+• Home (Lists): 
+– Floating Action Button (FAB) to create lists 
+– Search + Sort (A–Z / Recent), pin, archive 
+– Per-list color and emoji 
+– Row overflow menu: Open / Share / Pin / Archive / Set color / Set emoji
+– Sign out in toolbar and an empty state for first-time users
+
+• List (Items): 
+– Item quantity (+/–) with default of 1 
+– Swipe left = toggle checked; Swipe right = delete with UNDO
+– Optional A–Z sort for items 
+– Confetti shown when all items are checked 
+
+• Data model extensions: 
+– lists/{listId}: { name, createdBy, members[], createdAt, pinned:boolean, archived:boolean, color:"#RRGGBB", emoji:String }
+– lists/{listId}/items/{itemId}: { text, createdBy, createdAt, checked:boolean, quantity:int } 
+
+• Security & sharing: 
+– Members can read/update; only the creator can delete a list
+– Sharing implemented via email lookup (invite links planned earlier are deferred)
+
+VIII. Versioned Changelog 
+• v0.1 (Week 2): Outline and stack decisions (Android + Firebase), initial screens defined
+• v0.2 (Week 3): MVP running — Auth, create/open lists, add/check/delete items, email-based sharing
+• v0.3 (Week 4 — Current): UX pass — FAB, search/sort (A–Z/Recent), pin, archive, color/emoji, row menu, sign out; items get quantity (+/–), swipe gestures with UNDO, optional A–Z sort; confetti on 100% complete
+• Planned (toward Week 7 Final): 
+– v0.4–v0.6: Documentation polish, QA, and bug fixes only (feature freeze)
+– v1.0 (Week 7): Final submission (same feature set as Week 4 with fixes)
